@@ -1,3 +1,5 @@
+package Klub;
+
 import java.time.LocalDate;
 
 public class Medlem {
@@ -18,13 +20,13 @@ public class Medlem {
 
 class Passiv extends Medlem{
    public Passiv(String navn, String adresse, LocalDate foedselsdag, int telefonNr){
-    super(navn,adresse,foedselsdag,telefonNr,"Passiv");
+    super(navn,adresse,foedselsdag,telefonNr,"Klub.Passiv");
 }
 }
 
 class Motionist extends Medlem{
     public Motionist (String navn, String adresse, LocalDate foedselsdag, int telefonNr){
-        super(navn, adresse, foedselsdag,telefonNr,"Motionist");
+        super(navn, adresse, foedselsdag,telefonNr,"Klub.Motionist");
     }
 }
 

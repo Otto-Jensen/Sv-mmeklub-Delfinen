@@ -20,13 +20,13 @@ public class Medlem {
 
 class Passiv extends Medlem{
    public Passiv(String navn, String adresse, LocalDate foedselsdag, int telefonNr){
-    super(navn,adresse,foedselsdag,telefonNr,"Klub.Passiv");
+    super(navn,adresse,foedselsdag,telefonNr,"Passiv");
 }
 }
 
 class Motionist extends Medlem{
     public Motionist (String navn, String adresse, LocalDate foedselsdag, int telefonNr){
-        super(navn, adresse, foedselsdag,telefonNr,"Klub.Motionist");
+        super(navn, adresse, foedselsdag,telefonNr,"Motionist");
     }
 }
 

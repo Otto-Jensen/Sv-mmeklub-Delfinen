@@ -56,9 +56,8 @@ public class Medlem {
         if (medlemsType.equalsIgnoreCase("Passiv")) {
             return 500;
         }
-
-        public int getAlder ();
         int alder = getAlder();
+
         if (alder < 18) {
             return 1000;
         }

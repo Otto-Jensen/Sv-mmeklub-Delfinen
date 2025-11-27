@@ -11,12 +11,12 @@ public class Medlem {
     String medlemsType;
     boolean harBetalt;
 
-    public Medlem(String navn, String adresse, LocalDate foedselsdag, int telefonNr, String medlemsType){
-        this.navn=navn;
-        this.adresse=adresse;
-        this.foedselsdag=foedselsdag;
-        this.telefonNr=telefonNr;
-        this.medlemsType=medlemsType;
+    public Medlem(String navn, String adresse, LocalDate foedselsdag, int telefonNr, String medlemsType) {
+        this.navn = navn;
+        this.adresse = adresse;
+        this.foedselsdag = foedselsdag;
+        this.telefonNr = telefonNr;
+        this.medlemsType = medlemsType;
         this.harBetalt = false;
     }
 
@@ -57,7 +57,22 @@ public class Medlem {
             return 500;
         }
 
-        public int
+        public int getAlder ();
+        int alder = getAlder();
+        if (alder < 18) {
+            return 1000;
+        }
 
+        double seniorTakst = 1600;
+        if (alder >= 60) {
+            return seniorTakst * 0.75;
+        }
+        return seniorTakst;
+    }
+
+    public String toString() {
+        return navn + " | Alder: " + getAlder() + " - " + medlemsType +
+                " - Tlf: " + telefonNr +
+                " - Betalt: " + (harBetalt ? "Ja" : "Nej");
     }
 }

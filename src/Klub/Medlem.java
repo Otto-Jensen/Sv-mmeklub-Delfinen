@@ -1,6 +1,7 @@
 package Klub;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Medlem {
     String navn;
@@ -8,6 +9,7 @@ public class Medlem {
     LocalDate foedselsdag;
     int telefonNr;
     String medlemsType;
+    boolean harBetalt;
 
     public Medlem(String navn, String adresse, LocalDate foedselsdag, int telefonNr, String medlemsType){
         this.navn=navn;
@@ -15,5 +17,47 @@ public class Medlem {
         this.foedselsdag=foedselsdag;
         this.telefonNr=telefonNr;
         this.medlemsType=medlemsType;
+        this.harBetalt = false;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public LocalDate getFoedselsdag() {
+        return foedselsdag;
+    }
+
+    public int getTelefonNr() {
+        return telefonNr;
+    }
+
+    public String getMedlemsType() {
+        return medlemsType;
+    }
+
+    public boolean isHarBetalt() {
+        return harBetalt;
+    }
+
+    public void setHarBetalt(boolean harBetalt) {
+        this.harBetalt = harBetalt;
+    }
+
+    public int getAlder() {
+        return Period.between(foedselsdag, LocalDate.now()).getYears();
+    }
+
+    public double beregnKontingent() {
+        if (medlemsType.equalsIgnoreCase("Passiv")) {
+            return 500;
+        }
+
+        public int
+
     }
 }

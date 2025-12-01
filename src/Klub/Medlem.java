@@ -56,8 +56,8 @@ public class Medlem {
         if (medlemsType.equalsIgnoreCase("Passiv")) {
             return 500;
         }
-        int alder = getAlder();
 
+        int alder = getAlder();
         if (alder < 18) {
             return 1000;
         }
@@ -74,4 +74,5 @@ public class Medlem {
                 " - Tlf: " + telefonNr +
                 " - Betalt: " + (harBetalt ? "Ja" : "Nej");
     }
+
 }

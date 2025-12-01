@@ -1,3 +1,5 @@
+package Klub;
+
 import java.util.Scanner;
 
 public class KlubMenu {

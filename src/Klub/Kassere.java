@@ -6,19 +6,19 @@ import java.util.Scanner;
 public class Kassere {
 private MedlemsListe medlemsListe;
 
-public Kassere(MedlemsListe medlemsliste){
-    this.medlemsListe=medlemsliste;
+public Kassere(MedlemsListe medlemsListe){
+    this.medlemsListe=medlemsListe;
 }
 
     public ArrayList<Medlem>oversigtRestance(){
-        ArrayList<Medlem> restanceliste=new ArrayList<>();
+        ArrayList<Medlem> restanceListe=new ArrayList<>();
 
         for(Medlem m:medlemsListe.getMedlemmer()){
             if(!m.isHarBetalt()){
-                restanceliste.add(m);
+                restanceListe.add(m);
             }
         }
-        return restanceliste;
+        return restanceListe;
     }
 
     public void printOversigtRestance(){

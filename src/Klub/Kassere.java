@@ -34,4 +34,14 @@ public Kassere(MedlemsListe medlemsListe){
             System.out.println(m.getNavn()+"\n");
         }
     }
+    public void registrerBetaling(Medlem medlem) {
+        medlem.setHarBetalt(true);
+        System.out.println(medlem.getNavn() + " har nu betalt kontingent.");
+    }
+
+    public void fjernBetaling(Medlem medlem) {
+        medlem.setHarBetalt(false);
+        System.out.println(medlem.getNavn() + " står nu som ikke betalt.");
+    }
+
 }// lav en metode med søge funktion, hvor man kan ændre om de har betalt eller ej.

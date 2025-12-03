@@ -20,7 +20,7 @@ public class MedlemsListe {
       System.out.println("Indstast kundens navn");
       String name =input.nextLine();
 
-      System.out.println("Indtast fødselsdato");
+      System.out.println("Indtast fødselsdato (YYYY-MM-DD");
       String fd = input.nextLine();
       LocalDate foedselsdag=LocalDate.parse(fd);
 
@@ -33,9 +33,11 @@ public class MedlemsListe {
 
       System.out.println("Indtast telefon nummer");
       int telefonNr=input.nextInt();
+      input.nextLine();
 
       System.out.println("Indtast medlemstype");
       String medlemstype=input.nextLine().toLowerCase();
+
 
       Medlem medlem;
 

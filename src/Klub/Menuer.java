@@ -65,7 +65,7 @@ public class Menuer {
         System.out.println("1. Opret medlem");
         int valg= input.nextInt();
         if(valg==1){
-//        opretMedlem();
+        medlemsListe.opretMedlem();
         }else{
             System.out.println("Ugyldigt valg");
             return;

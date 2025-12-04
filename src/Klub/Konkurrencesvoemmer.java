@@ -10,6 +10,9 @@ public class Konkurrencesvoemmer extends Medlem {
         super(navn, adresse, foedselsdag, telefonNr, "KonkurrenceSvømmer");
         this.traeningstid = traeningstid;
         this.konkurrencetid = konkurrencetid;
+
+
+
     }
 
     public Konkurrencesvoemmer(String navn, String adresse, LocalDate foedselsdag, int telefonNr){

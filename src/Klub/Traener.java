@@ -25,4 +25,20 @@ public class Traener {
 
     }
 
+
+    @Override
+    public String toString() {
+        String resultat = "Træner" + navn + "\n";
+        resultat += "Holdoversigt:\n";
+
+        for (Konkurrencesvoemmer svommer : hold) {
+            resultat += "Navn: " + svommer.getNavn() + "\n";
+            resultat += "Alder: " + svommer.getAlder() + "\n";
+
+        }
+    }
+
 }
+
+
+

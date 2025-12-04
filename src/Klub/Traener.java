@@ -3,42 +3,63 @@ import java.util.ArrayList;
 
 
 public class Traener {
-    private String navn;
-    private ArrayList<Konkurrencesvoemmer> hold;
+//    private String navn;
+     private MedlemsListe medlemsListe;
+     private ArrayList<Medlem>medlemmer;
+
+    private ArrayList<Konkurrencesvoemmer> holdA = new ArrayList<>();
+    private ArrayList<Konkurrencesvoemmer> holdB = new ArrayList<>();
 
 
-    public Traener(String navn){
-        this.navn = navn;
-        this.hold = new ArrayList<>();
+    public Traener(MedlemsListe medlemsListe){
+        this.medlemsListe = medlemsListe;
+        this.medlemmer=medlemsListe.getMedlemmer();
     }
 
-    public String getNavn(){
-        return navn;
+//    public String getNavn(){
+//        return navn;
+//    }
+
+    public ArrayList<Konkurrencesvoemmer>getHoldA(){
+        return holdA;
     }
 
-    public void tilfojeSvommer (Konkurrencesvoemmer svommer){
-        hold.add(svommer);
+    public ArrayList<Konkurrencesvoemmer>getHoldB(){
+        return holdB;
     }
 
-    public ArrayList<Konkurrencesvoemmer>getHold(){
-        return hold;
-
-    }
-
-
-    @Override
-    public String toString() {
-        String resultat = "Træner" + navn + "\n";
-        resultat += "Holdoversigt:\n";
-
-        for (Konkurrencesvoemmer svommer : hold) {
-            resultat += "Navn: " + svommer.getNavn() + "\n";
-            resultat += "Alder: " + svommer.getAlder() + "\n";
-
+public void tildelHold(){
+        for (Medlem m: medlemmer){
+            if (m instanceof Konkurrencesvoemmer){
+                Konkurrencesvoemmer k = (Konkurrencesvoemmer) m;
+                if(k.getAlder()<=18) {
+                    holdB.add(k);
+                }else{
+                    holdA.add(k);
+                    }
+                }
+            }
         }
+
+public String toStringHoldA(){
+StringBuilder sb = new StringBuilder();
+sb.append("Hold A:\n");
+
+for (Konkurrencesvoemmer k: holdA){
+    sb.append(k.toString()).append("\n");
+}
+    return sb.toString();
     }
 
+public String toStringHoldB(){
+StringBuilder sb=new StringBuilder();
+sb.append("Hold B:\n");
+
+for (Konkurrencesvoemmer k: holdB){
+    sb.append(k.toString()).append("\n");
 }
 
-
+    return sb.toString();
+}
+}
 

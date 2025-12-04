@@ -3,7 +3,8 @@ package Klub;
 import java.util.Scanner;
 
 public class Menuer {
-    private MedlemsListe medlemsListe = new MedlemsListe();
+    private MedlemsListe medlemsListe=new MedlemsListe();
+    Traener traener=new Traener(medlemsListe);
     private Kassere kassere = new Kassere(medlemsListe);
     private Scanner input=new Scanner(System.in);
 
@@ -48,6 +49,11 @@ public class Menuer {
         System.out.println("1. se Konkurrencesvømmere");
         System.out.println("2. Indberet træningstid");
         System.out.println("3.Indberet Konkurrencetid");
+        int valg = input.nextInt();
+        if(valg==1){
+            System.out.println(traener.toStringHoldA()+"\t\t\t\t\t\t");
+            System.out.println(traener.toStringHoldB());
+        }
     }
 
      public void kassereMenu(){
@@ -66,6 +72,7 @@ public class Menuer {
         int valg= input.nextInt();
         if(valg==1){
         medlemsListe.opretMedlem();
+        traener.tildelHold();
         }else{
             System.out.println("Ugyldigt valg");
             return;

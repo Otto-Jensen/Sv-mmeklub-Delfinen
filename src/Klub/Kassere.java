@@ -1,47 +1,44 @@
 package Klub;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Kassere {
-private MedlemsListe medlemsListe;
 
-public Kassere(MedlemsListe medlemsListe){
-    this.medlemsListe=medlemsListe;
-}
-
-    public ArrayList<Medlem>oversigtRestance(){
-        ArrayList<Medlem> restanceListe=new ArrayList<>();
-
-        for(Medlem m:medlemsListe.getMedlemmer()){
-            if(!m.isHarBetalt()){
-                restanceListe.add(m);
+    public void visRestance(List<Medlem> medlemsliste) {
+        System.out.println("Følgende medlemmer er i restance:");
+        boolean ingenIRestance = true;
+        for (Medlem medlem : medlemsliste) {
+            if (!medlem.harBetalt()) {
+                System.out.println("- " + medlem.getFornavn() + " " + medlem.getEfternavn() +
+                        " (Kontingent: " + medlem.beregnKontingent() + " kr)");
+                ingenIRestance = false;
             }
         }
-        return restanceListe;
-    }
-
-    public void printOversigtRestance(){
-    ArrayList<Medlem> liste=oversigtRestance();
-
-    if (liste.isEmpty()){
-        System.out.println("Der er ingen medlemmer i restance");
-        return;
-    }
-
-        System.out.println("Medlemmer i restance");
-        for (Medlem m:liste){
-            System.out.println(m.getNavn()+"\n");
+        if (ingenIRestance) {
+            System.out.println("Ingen medlemmer er i restance.");
         }
     }
-    public void registrerBetaling(Medlem medlem) {
-        medlem.setHarBetalt(true);
-        System.out.println(medlem.getNavn() + " har nu betalt kontingent.");
-    }
 
-    public void fjernBetaling(Medlem medlem) {
-        medlem.setHarBetalt(false);
-        System.out.println(medlem.getNavn() + " står nu som ikke betalt.");
-    }
+    public void opkraevKontingent(List<Medlem> medlemsliste, Scanner scanner) {
+        System.out.println("Hvilket medlem vil du opkræve kontingent for?");
+        for (int i = 0; i < medlemsliste.size(); i++) {
+            System.out.println((i + 1) + ". " + medlemsliste.get(i).getFornavn() + " " + medlemsliste.get(i).getEfternavn());
+        }
+        System.out.print("Vælg et nummer: ");
+        int valg = scanner.nextInt();
+        scanner.nextLine();
 
-}// lav en metode med søge funktion, hvor man kan ændre om de har betalt eller ej.
+        if (valg > 0 && valg <= medlemsliste.size()) {
+            Medlem valgtMedlem = medlemsliste.get(valg - 1);
+            if (!valgtMedlem.harBetalt()) {
+                valgtMedlem.setHarBetalt(true);
+                System.out.println("Kontingent opkrævet for " + valgtMedlem.getFornavn() + " " + valgtMedlem.getEfternavn());
+            } else {
+                System.out.println(valgtMedlem.getFornavn() + " " + valgtMedlem.getEfternavn() + " har allerede betalt.");
+            }
+        } else {
+            System.out.println("Ugyldigt valg.");
+        }
+    }
+}

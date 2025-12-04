@@ -4,43 +4,71 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Medlem {
-    String navn;
-    String adresse;
-    LocalDate foedselsdag;
-    int telefonNr;
-    String medlemsType;
-    boolean harBetalt;
+    private String fornavn;
+    private String efternavn;
+    private LocalDate fødselsdato;
+    private String adresse;
+    private String postnummer;
+    private String by;
+    private String telefonnummer;
+    private String email;
+    private boolean isAktiv;
+    private boolean harBetalt;
 
-    public Medlem(String navn, String adresse, LocalDate foedselsdag, int telefonNr, String medlemsType) {
-        this.navn = navn;
+    public Medlem(String fornavn, String efternavn, LocalDate fødselsdato, String adresse, String postnummer, String by, String telefonnummer, String email, boolean isAktiv) {
+        this.fornavn = fornavn;
+        this.efternavn = efternavn;
+        this.fødselsdato = fødselsdato;
         this.adresse = adresse;
-        this.foedselsdag = foedselsdag;
-        this.telefonNr = telefonNr;
-        this.medlemsType = medlemsType;
+        this.postnummer = postnummer;
+        this.by = by;
+        this.telefonnummer = telefonnummer;
+        this.email = email;
+        this.isAktiv = isAktiv;
         this.harBetalt = false;
     }
 
-    public String getNavn() {
-        return navn;
+    public String getFornavn() {
+        return fornavn;
+    }
+
+    public String getEfternavn() {
+        return efternavn;
+    }
+    
+    public LocalDate getFødselsdato() {
+        return fødselsdato;
+    }
+
+    public int getAlder() {
+        return Period.between(fødselsdato, LocalDate.now()).getYears();
     }
 
     public String getAdresse() {
         return adresse;
     }
 
-    public LocalDate getFoedselsdag() {
-        return foedselsdag;
+    public String getPostnummer() {
+        return postnummer;
     }
 
-    public int getTelefonNr() {
-        return telefonNr;
+    public String getBy() {
+        return by;
     }
 
-    public String getMedlemsType() {
-        return medlemsType;
+    public String getTelefonnummer() {
+        return telefonnummer;
     }
 
-    public boolean isHarBetalt() {
+    public String getEmail() {
+        return email;
+    }
+
+    public boolean isAktiv() {
+        return isAktiv;
+    }
+
+    public boolean harBetalt() {
         return harBetalt;
     }
 
@@ -48,31 +76,28 @@ public class Medlem {
         this.harBetalt = harBetalt;
     }
 
-    public int getAlder() {
-        return Period.between(foedselsdag, LocalDate.now()).getYears();
-    }
-
     public double beregnKontingent() {
-        if (medlemsType.equalsIgnoreCase("Passiv")) {
+        if (!isAktiv) {
             return 500;
+        } else {
+            int alder = getAlder();
+            if (alder < 18) {
+                return 1000;
+            } else if (alder >= 60) {
+                return 1600 * 0.75;
+            } else {
+                return 1600;
+            }
         }
-
-        int alder = getAlder();
-        if (alder < 18) {
-            return 1000;
-        }
-
-        double seniorTakst = 1600;
-        if (alder >= 60) {
-            return seniorTakst * 0.75;
-        }
-        return seniorTakst;
     }
 
     public String toString() {
-        return navn + " | Alder: " + getAlder() + " - " + medlemsType +
-                " - Tlf: " + telefonNr +
-                " - Betalt: " + (harBetalt ? "Ja" : "Nej");
+        return "Navn: " + fornavn + " " + efternavn +
+                ", Alder: " + getAlder() +
+                ", Adresse: " + adresse + ", " + postnummer + " " + by +
+                ", Telefon: " + telefonnummer +
+                ", Email: " + email +
+                ", Medlemsskab: " + (isAktiv ? "Aktiv" : "Passiv") +
+                ", Betalingsstatus: " + (harBetalt ? "Betalt" : "Restance");
     }
-
 }

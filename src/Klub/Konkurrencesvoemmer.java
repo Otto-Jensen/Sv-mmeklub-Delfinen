@@ -11,8 +11,6 @@ public class Konkurrencesvoemmer extends Medlem {
         this.traeningstid = traeningstid;
         this.konkurrencetid = konkurrencetid;
 
-
-
     }
 
     public Konkurrencesvoemmer(String navn, String adresse, LocalDate foedselsdag, int telefonNr){

@@ -62,31 +62,7 @@ for (Konkurrencesvoemmer k: holdB){
     return sb.toString();
 }
 
-public Konkurrencesvoemmer vaelgKonkurrencesvommer() {
-    Scanner scanner = new Scanner(System.in);
 
-    ArrayList<Konkurrencesvoemmer> alleSvommer = new ArrayList<>();
-    alleSvommer.addAll(holdA);
-    alleSvommer.addAll(holdB);
-
-
-    if (alleSvommer.isEmpty()) {
-        System.out.println("Der er ingen konkurrencesvømmer.");
-        return null;
-    }
-
-    System.out.println("Vælge en konkurrencesvømmer");
-
-    for (int i = 0; i < alleSvommer.size(); i++) {
-        System.out.println((i + 1) + ". " + alleSvommer.get(i).getNavn());
-    }
-
-    System.out.println("Skrive en nummer: ");
-    int valg = scanner.nextInt();
-
-    return alleSvommer.get(valg - 1);
-
-}
 
 }
 

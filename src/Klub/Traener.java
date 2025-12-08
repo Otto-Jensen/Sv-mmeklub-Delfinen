@@ -1,6 +1,6 @@
 package Klub;
 import java.util.ArrayList;
-
+import java.util.Scanner;
 
 public class Traener {
 //    private String navn;
@@ -61,5 +61,8 @@ for (Konkurrencesvoemmer k: holdB){
 
     return sb.toString();
 }
+
+
+
 }
 

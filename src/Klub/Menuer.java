@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Menuer {
     private MedlemsListe medlemsListe=new MedlemsListe();
-    Traener traener=new Traener(medlemsListe);
+    private Traener traener=new Traener(medlemsListe);
     private Kassere kassere = new Kassere(medlemsListe);
     private Scanner input=new Scanner(System.in);
 
@@ -53,6 +53,8 @@ public class Menuer {
         if(valg==1){
             System.out.println(traener.toStringHoldA()+"\t\t\t\t\t\t");
             System.out.println(traener.toStringHoldB());
+        }else if(valg==2){
+           medlemsListe.indberetTraeningstid();
         }
     }
 

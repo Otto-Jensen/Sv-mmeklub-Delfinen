@@ -61,14 +61,21 @@ public class MedlemsListe {
   }
 
 
-//    public static void main(String[] args) {
-//        MedlemsListe liste=new MedlemsListe();
-//        Kassere kassere=new Kassere(liste);
-//        Passiv p=new Passiv("Lars", "Dirchsvej 45", LocalDate.of(1990,4,5),12312312);
-//        liste.tilfoejMedlem(p);
-//        for (Medlem medlem:liste.getMedlemmer()){
-//            System.out.println(p.toString());
-//        }
-//        kassere.printOversigtRestance();
-//    }
+    public void indberetTraeningstid(){
+        Scanner input= new Scanner(System.in);
+        System.out.println("Indtast svømmers navn");
+        String navn= input.nextLine();
+        for (Medlem m:medlemmer){
+            if(m instanceof Konkurrencesvoemmer k && m.getNavn().equalsIgnoreCase(navn)){
+                System.out.println("Indtast diciplin");
+                String diciplin=input.nextLine();
+                System.out.println("Indtast træningstid (minutter)");
+                int tid= input.nextInt();
+                k.setTraeningstid(new Traeningstid(diciplin, tid));
+                return;
+
+            }
+        }
+        System.out.println("Svømmer ikke fundet.");
+    }
 }

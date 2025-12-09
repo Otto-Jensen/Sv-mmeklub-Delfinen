@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Konkurrencesvoemmer extends Medlem {
     private MedlemsListe medlemsListe;
     private ArrayList<Medlem> medlemmer;
-//    static String[]dicipliner={"Bryst","Ryg","Butterfly","Freestyle"};
     Traeningstid traeningstid;
     int konkurrencetid;
 
@@ -25,6 +24,11 @@ public class Konkurrencesvoemmer extends Medlem {
     public void setTraeningstid(Traeningstid traeningstid){
         this.traeningstid=traeningstid;
     }
+
+    public Traeningstid getTraeningstid(){
+        return traeningstid;
+    }
+
 
 //    public void indberetTraeningstid(){
 //        Scanner input= new Scanner(System.in);
@@ -59,23 +63,37 @@ public class Konkurrencesvoemmer extends Medlem {
         return sb.toString();
     }
 }
+
+enum Diciplin{
+    CRAWL,FREESTYLE, BRYST, BUTTERFLY;
+
+    public static Diciplin fromString(String input){
+        for (Diciplin d:Diciplin.values()){
+            if (d.name().equalsIgnoreCase(input)){
+                return d;
+            }
+        }
+        System.out.println("Ugyldig diciplin");
+        return null;
+    }
+}
 class Traeningstid{
-    private String diciplin;
+    private Diciplin diciplin;
     private int tid;
 
-    public Traeningstid(String diciplin, int tid){
+    public Traeningstid(Diciplin diciplin, int tid){
         this.diciplin=diciplin;
         this.tid=tid;
     }
 
-    public String getDiciplin(){
+    public Diciplin getDiciplin(){
         return diciplin;
     }
     public int getTid(){
         return tid;
     }
 
-    public void setTraeningstid(String diciplin, int tid){
+    public void setTraeningstid(Diciplin diciplin, int tid){
         this.diciplin=diciplin;
         this.tid=tid;
         System.out.println("Træningstiden for "+diciplin+" er sat til "+tid+ "minutter");

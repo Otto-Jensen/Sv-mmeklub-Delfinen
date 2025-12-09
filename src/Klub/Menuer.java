@@ -48,13 +48,36 @@ public class Menuer {
      public void traenerMenu(){
         System.out.println("1. se Konkurrencesvømmere");
         System.out.println("2. Indberet træningstid");
-        System.out.println("3.Indberet Konkurrencetid");
+        System.out.println("3.Bedste svømmere i klubben");
         int valg = input.nextInt();
         if(valg==1){
             System.out.println(traener.toStringHoldA()+"\t\t\t\t\t\t");
             System.out.println(traener.toStringHoldB());
         }else if(valg==2){
            medlemsListe.indberetTraeningstid();
+        }else if (valg ==3){
+            System.out.println("1. Top 5 Bryst");
+            System.out.println("2. Top 5 Crawl");
+            System.out.println("3. Top 5 Freestyle");
+            System.out.println("4. Top 5 Butterfly");
+            input.nextLine();
+            switch (valg){
+                case 1:
+                    medlemsListe.top5(Diciplin.BRYST);
+                    break;
+
+                case 2:
+                    medlemsListe.top5(Diciplin.CRAWL);
+                    break;
+
+                case 3:
+                    medlemsListe.top5(Diciplin.FREESTYLE);
+                    break;
+
+                case 4:
+                  medlemsListe.top5(Diciplin.BUTTERFLY);
+                    break;
+            }
         }
     }
 

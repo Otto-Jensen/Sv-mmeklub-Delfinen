@@ -1,10 +1,12 @@
 package Klub;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MedlemsListe {
+    Traener traener;
     Scanner input = new Scanner(System.in);
     private ArrayList<Medlem> medlemmer=new ArrayList<>();
 
@@ -61,7 +63,7 @@ public class MedlemsListe {
   }
 
 
-    public void indberetTraeningstid(){
+    public void indberetTraeningstid() {
         Scanner input= new Scanner(System.in);
         System.out.println("Indtast svømmers navn");
         String navn= input.nextLine();
@@ -71,11 +73,33 @@ public class MedlemsListe {
                 String diciplin=input.nextLine();
                 System.out.println("Indtast træningstid (minutter)");
                 int tid= input.nextInt();
-                k.setTraeningstid(new Traeningstid(diciplin, tid));
+                k.setTraeningstid(new Traeningstid(Diciplin.fromString(diciplin), tid));
                 return;
 
             }
         }
         System.out.println("Svømmer ikke fundet.");
     }
+
+public void top5(Diciplin diciplin){
+ArrayList<Konkurrencesvoemmer>listTop5 = new ArrayList<>();
+for (Medlem m:medlemmer){
+    if (m instanceof Konkurrencesvoemmer k){
+        Traeningstid t=k.getTraeningstid();
+
+        if(t!=null && t.getDiciplin()==diciplin){
+            listTop5.add(k);
+        }
+    }
+}
+listTop5.sort((a,b)->Integer.compare(a.getTraeningstid().getTid(),b.getTraeningstid().getTid()));
+    System.out.println("Top 5 - "+ diciplin);
+    for (int i=0; i<Math.min(5,listTop5.size()); i++){
+        Konkurrencesvoemmer k= listTop5.get(i);
+        System.out.println((i+1)+". "+k.getNavn()+" - "+ k.getTraeningstid().getTid()+" min");
+    }
+    if (listTop5.isEmpty()){
+        System.out.println("Der er ingen registreret træningstider");
+    }
+     }
 }

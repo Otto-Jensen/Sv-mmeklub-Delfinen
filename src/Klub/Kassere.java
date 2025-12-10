@@ -29,9 +29,9 @@ public Kassere(MedlemsListe medlemsListe){
         return;
     }
 
-        System.out.println("Medlemmer i restance");
+        System.out.println("Medlemmer i restance:");
         for (Medlem m:liste){
-            System.out.println(m.getNavn()+"\n" + m.beregnKontingent());
+            System.out.println(m.getNavn()+": Skylder " + m.beregnKontingent()+ " kr.");
         }
     }
     public void registrerBetaling() {
@@ -41,7 +41,7 @@ public Kassere(MedlemsListe medlemsListe){
         Medlem medlem=medlemsListe.soegNavn(navn);
         if (medlem!=null){
             medlem.setHarBetalt(true);
-            System.out.println(medlem.getNavn()+" Har nu betalt");
+            System.out.println(medlem.getNavn()+" har nu betalt");
         }
         else{System.out.println("Medlem ikke fundet");}
     }

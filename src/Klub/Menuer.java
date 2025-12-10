@@ -88,7 +88,7 @@ public class Menuer {
         if(valg==1){
             kassere.printOversigtRestance();
         }else if(valg==2){
-            System.out.println("ændre til metodekald inde fra kassere der håndtere betalinger.");
+            kassere.registrerBetaling();
         }
     }
 

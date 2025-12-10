@@ -14,8 +14,21 @@ public class MedlemsListe {
         medlemmer.add(x);
     }
 
+    public void removeMedlem(Medlem x){
+        medlemmer.remove(x);
+    }
+
     public ArrayList<Medlem> getMedlemmer() {
         return medlemmer;
+    }
+
+    public Medlem soegNavn(String navn){
+        for (Medlem m: medlemmer){
+            if (m.getNavn().equalsIgnoreCase(navn)){
+                return m;
+            }
+        }
+        return null;
     }
 
   public void opretMedlem(){

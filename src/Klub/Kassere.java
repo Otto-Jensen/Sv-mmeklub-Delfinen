@@ -31,12 +31,19 @@ public Kassere(MedlemsListe medlemsListe){
 
         System.out.println("Medlemmer i restance");
         for (Medlem m:liste){
-            System.out.println(m.getNavn()+"\n");
+            System.out.println(m.getNavn()+"\n" + m.beregnKontingent());
         }
     }
-    public void registrerBetaling(Medlem medlem) {
-        medlem.setHarBetalt(true);
-        System.out.println(medlem.getNavn() + " har nu betalt kontingent.");
+    public void registrerBetaling() {
+    Scanner input=new Scanner(System.in);
+        System.out.println("Indtast navnet på medlem der skal betale");
+        String navn= input.nextLine();
+        Medlem medlem=medlemsListe.soegNavn(navn);
+        if (medlem!=null){
+            medlem.setHarBetalt(true);
+            System.out.println(medlem.getNavn()+" Har nu betalt");
+        }
+        else{System.out.println("Medlem ikke fundet");}
     }
 
     public void fjernBetaling(Medlem medlem) {

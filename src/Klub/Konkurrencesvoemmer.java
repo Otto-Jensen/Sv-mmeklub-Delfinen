@@ -5,15 +5,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Konkurrencesvoemmer extends Medlem {
-    private MedlemsListe medlemsListe;
-    private ArrayList<Medlem> medlemmer;
     Traeningstid traeningstid;
-    int konkurrencetid;
 
-    public Konkurrencesvoemmer(String navn, String adresse, LocalDate foedselsdag, int telefonNr, Traeningstid traeningstid, int konkurrencetid) {
+
+    public Konkurrencesvoemmer(String navn, String adresse, LocalDate foedselsdag, int telefonNr, Traeningstid traeningstid) {
         super(navn, adresse, foedselsdag, telefonNr, "KonkurrenceSvømmer");
         this.traeningstid = traeningstid;
-        this.konkurrencetid = konkurrencetid;
 
     }
 
@@ -59,7 +56,6 @@ public class Konkurrencesvoemmer extends Medlem {
             sb.append("Disciplin: ").append(traeningstid.getDiciplin()).append("\n");
             sb.append("Træningstid: ").append(traeningstid.getTid()).append(" min\n");
         }
-        sb.append("Konkurrencetid: ").append(konkurrencetid).append("\n");
         return sb.toString();
     }
 }

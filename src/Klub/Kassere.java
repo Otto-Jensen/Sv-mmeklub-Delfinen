@@ -51,4 +51,4 @@ public Kassere(MedlemsListe medlemsListe){
         System.out.println(medlem.getNavn() + " står nu som ikke betalt.");
     }
 
-}// lav en metode med søge funktion, hvor man kan ændre om de har betalt eller ej.
+}

@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MedlemsListe {
-    Traener traener;
     Scanner input = new Scanner(System.in);
-    private ArrayList<Medlem> medlemmer=new ArrayList<>();
+    private static ArrayList<Medlem> medlemmer=new ArrayList<>();
 
     public void tilfoejMedlem(Medlem x){
         medlemmer.add(x);
     }
 
-    public void removeMedlem(Medlem x){
+    public void removeMedlem(Medlem x, Traener traener){
         medlemmer.remove(x);
+        traener.getHoldA().remove(x);
+        traener.getHoldB().remove(x);
+
     }
 
     public ArrayList<Medlem> getMedlemmer() {

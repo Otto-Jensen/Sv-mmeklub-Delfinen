@@ -94,12 +94,22 @@ public class Menuer {
 
      public void formandMenu(){
         System.out.println("1. Opret medlem");
+         System.out.println("2. Fjern medlem");
         int valg= input.nextInt();
+        input.nextLine();
         if(valg==1){
         medlemsListe.opretMedlem();
         traener.tildelHold();
-        }else{
-            System.out.println("Ugyldigt valg");
+        }else if(valg==2){
+            System.out.println("Indtast navn på medlem der skal fjernes");
+            String navn= input.nextLine();
+            Medlem m=medlemsListe.soegNavn(navn);
+            if(m!=null){
+                medlemsListe.removeMedlem(m,traener);
+            }else{
+                System.out.println("Medlem ikke fundet");
+            }
+        input.nextLine();
             return;
         }
     }

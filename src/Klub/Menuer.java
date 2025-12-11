@@ -51,8 +51,8 @@ public class Menuer {
         System.out.println("3.Bedste svømmere i klubben");
         int valg = input.nextInt();
         if(valg==1){
-            System.out.println(traener.toStringHoldA()+"\t\t\t\t\t\t");
-            System.out.println(traener.toStringHoldB());
+            System.out.println(traener.toStringSenior()+"\t\t\t\t\t\t");
+            System.out.println(traener.toStringUng());
         }else if(valg==2){
            medlemsListe.indberetTraeningstid();
         }else if (valg ==3){

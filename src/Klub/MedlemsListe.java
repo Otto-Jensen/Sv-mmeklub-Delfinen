@@ -15,8 +15,8 @@ public class MedlemsListe {
 
     public void removeMedlem(Medlem x, Traener traener){
         medlemmer.remove(x);
-        traener.getHoldA().remove(x);
-        traener.getHoldB().remove(x);
+        traener.getSenior().remove(x);
+        traener.getUng().remove(x);
 
     }
 

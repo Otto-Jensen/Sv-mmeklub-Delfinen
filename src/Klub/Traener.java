@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Traener {
      private MedlemsListe medlemsListe;
 
-    private ArrayList<Medlem> holdA = new ArrayList<>();
-    private ArrayList<Medlem> holdB = new ArrayList<>();
+    private ArrayList<Medlem> senior = new ArrayList<>();
+    private ArrayList<Medlem> ung = new ArrayList<>();
 
 
     public Traener(MedlemsListe medlemsListe){
@@ -14,12 +14,12 @@ public class Traener {
     }
 
 
-    public ArrayList<Medlem>getHoldA(){
-        return holdA;
+    public ArrayList<Medlem>getSenior(){
+        return senior;
     }
 
-    public ArrayList<Medlem>getHoldB(){
-        return holdB;
+    public ArrayList<Medlem>getUng(){
+        return ung;
     }
 
 public void tildelHold(){//ændret fra m:medlemmer
@@ -27,29 +27,29 @@ public void tildelHold(){//ændret fra m:medlemmer
             if (m instanceof Konkurrencesvoemmer){
                 Konkurrencesvoemmer k = (Konkurrencesvoemmer) m;
                 if(k.getAlder()<=18) {
-                    holdB.add(k);
+                    ung.add(k);
                 }else{
-                    holdA.add(k);
+                    senior.add(k);
                     }
                 }
             }
         }
 
-public String toStringHoldA(){
+public String toStringSenior(){
 StringBuilder sb = new StringBuilder();
 sb.append("Hold A:\n");
 
-for (Medlem m: holdA){
+for (Medlem m: senior){
     sb.append(m.toString()).append("\n");
 }
     return sb.toString();
     }
 
-public String toStringHoldB(){
+public String toStringUng(){
 StringBuilder sb=new StringBuilder();
 sb.append("Hold B:\n");
 
-for (Medlem m: holdB){
+for (Medlem m: ung){
     sb.append(m.toString()).append("\n");
 }
 
